@@ -1,0 +1,32 @@
+DQL(data query language)
+- SELECT: 데이터를 얻어옴
+
+DML(data manipulation language)
+- INSERT: 데이터 삽입
+- UPDATE: 데이터 수정
+- DELETE: 데이터 삭제
+
+SQL은 대소문자를 강제하지는 않는다.
+예약어는 대문자로 쓰고 나머지 문자는 소문자로 많이 써라
+
+------------------------------------------------------------------------
+
+데이터는 테이블에 저장된다. ( 행과 열 )
+액셀과 유사하다.
+
+row : 레코드 한개 
+column : 각 레코드의 property
+
+SELECT * FROM Customers; // 테이블의 모든 레코드를 얻어옴 (모든 column)
+SELECT CustomerName FROM Customers; // 컬럼을 선별
+SELECT CustomerName, Address FROM Customers;
+SELECT CustomerName, Address FROM Customers LIMIT 10; // 10개만
+
+
+// https://www.hackerrank.com/challenges/select-all-sql/problem
+// SELECT * FROM CITY;
+
+// https://www.hackerrank.com/challenges/weather-observation-station-1/problem
+// SELECT CITY, STATE FROM STATION;
+
+------------------------------------------------------------------------

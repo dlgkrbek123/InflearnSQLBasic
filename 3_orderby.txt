@@ -1,0 +1,61 @@
+ORDER BY
+- 기본으로 ASC 정렬을 해준다.
+- 저장된 순서를 바꾸는건 아니야
+
+SELECT * 
+FROM Customers 
+ORDER BY customerid DESC;
+
+SELECT *
+FROM Products
+WHERE price > 20
+ORDER BY price DESC;
+
+SELECT *
+FROM Products
+ORDER BY price DESC;
+LIMIT 1;
+
+
+/**/ 도 주석된다.
+-- 로 한줄 주석
+
+------------------------------------------------------------------------
+
+문제풀이
+
+1. https://www.hackerrank.com/challenges/name-of-employees/problem
+SELECT name
+FROM Employee
+ORDER BY name;
+
+2. https://www.hackerrank.com/challenges/salary-of-employees/problem?h_r=next-challenge&h_v=zen
+SELECT name -- 이름 출력
+FROM Employee -- 테이블 이름
+WHERE salary > 2000
+AND months < 10
+ORDER BY employee_id;
+
+3. https://www.hackerrank.com/challenges/more-than-75-marks/problem
+SELECT Name 
+FROM STUDENTS 
+WHERE Marks > 75 
+ORDER BY RIGHT(NAME, 3), ID ASC; -- 정렬조건을 여러개 우선순위 줘서 진행 가능
+
+LEFT(컬럼 || 문자열, length)
+RIGHT(컬럼 || 문자열, length)
+SUBSTRING(컬럼 || 문자열, start, length)
+
+
+4. https://www.hackerrank.com/challenges/weather-observation-station-15/problem
+SELECT ROUND(LONG_W, 4)
+FROM STATION
+WHERE LAT_N < 137.2345
+ORDER BY LAT_N DESC
+LIMIT 1;
+
+CEIL(컬럼 || 문자열)
+FLOOR(컬럼 || 문자열)
+ROUND(컬럼 || 문자열, length)
+
+------------------------------------------------------------------------

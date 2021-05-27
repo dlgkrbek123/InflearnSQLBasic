@@ -1,0 +1,85 @@
+조건을 만족하는 레코드만 얻어오고 싶다.
+WHERE절을 알아야 한다.
+= <> > < >= <=
+
+SELECT * FROM Customers WHERE Country = 'Germany';
+SELECT * FROM Customers WHERE CustomerID < 50;
+
+
+문자열도 비교가능
+
+SELECT * FROM Customers WHERE CustomerName < "B"; // A로 시작하는 데이터만 가져옴
+SELECT * FROM Customers WHERE CustomerName < "B" AND Country = "Germany"; // 이름이 A로 시작하며 국적이 독일인 레코드만
+SELECT * FROM Customers WHERE CustomerName < "B" OR Country = "Germany";
+
+------------------------------------------------------------------------
+
+LIKE로 문자열의 패턴을 찾아보자. (부분 검색)
+%는 뒤에 어떤것이 들어가도 상관없다. (와일드카드)
+%는 와일드카드로 예약어이다 패턴내에서 사용시 이스케이프 필요
+
+SELECT * FROM Customers WHERE country LIKE "Br%" // 국적이 Br로 시작하는 레코드
+SELECT * FROM Customers WHERE country LIKE "%r%" // 국적에 r이 포함된 레코드
+
+SELECT * FROM Customers WHERE country LIKE "Brazil"
+- 정확히 브라질인 레코드 =이랑 똑같네 이럴때 = 쓰는게 성능상 좋다.
+
+SELECT * FROM Customers WHERE country LIKE "B_____"; // 아무문자나 5개가 뒤에 와야 함. 한글자 와일드카드
+
+SELECT * FROM Customers WHERE discount LIKE "50\%";
+SELECT * FROM Customers WHERE discount LIKE "__\%"; // 2자리 숫자후 %가 붙는 패턴
+
+------------------------------------------------------------------------
+
+IN, BETWEEN
+
+SELECT * FROM Customers WHERE country IN ('Germany', 'France') // 국적이 Germany이거나 France
+SELECT * FROM Customers WHERE country = 'Germany' OR country = 'France';
+
+SELECT * FROM Customers WHERE CustomerID BETWEEN 3 AND 5; // 3, 4, 5
+SELECT * FROM Customers WHERE CustomerID >= 3 AND CustomerID <= 5;
+
+SELECT * FROM Orders WHERE CustomerOrder BETWEEN '2019-01-01' AND '2020-01-01'
+
+------------------------------------------------------------------------
+
+테이블에 데이터가 입력되지 않았을 수도 있다. (NaN, NULL)
+그런 부분을 검색하기 위한 예약어 
+
+SELECT * FROM Customers WHERE CustomerID IS NULL;
+SELECT * FROM Customers WHERE CustomerID IS NOT NULL;
+
+------------------------------------------------------------------------
+
+- 문제풀이
+
+1. https://www.hackerrank.com/challenges/revising-the-select-query/problem
+SELECT * FROM CITY WHERE population > 100000 AND CountryCode = 'USA';
+
+2. https://www.hackerrank.com/challenges/select-by-id/problem
+SELECT * FROM CITY WHERE ID = 1661;
+
+3. https://www.hackerrank.com/challenges/weather-observation-station-6/problem
+SELECT DISTINCT CITY 
+FROM STATION 
+WHERE CITY LIKE 'a%' 
+OR city LIKE 'e%' 
+OR city LIKE 'i%' 
+OR city LIKE 'o%' 
+OR city LIKE 'u%';
+
+4. https://www.hackerrank.com/challenges/weather-observation-station-12/problem
+SELECT DISTINCT city 
+FROM STATION
+WHERE city NOT LIKE 'a%'
+AND city NOT LIKE 'e%'
+AND city NOT LIKE 'i%'
+AND city NOT LIKE 'o%'
+AND city NOT LIKE 'u%'
+AND city NOT LIKE '%a'
+AND city NOT LIKE '%e'
+AND city NOT LIKE '%i'
+AND city NOT LIKE '%o'
+AND city NOT LIKE '%u';
+
+------------------------------------------------------------------------
